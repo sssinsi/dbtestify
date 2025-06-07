@@ -3,13 +3,46 @@
 ![icon](https://raw.githubusercontent.com/shibukawa/dbtestify/refs/heads/main/docs/dbtestify_icon.png)
 
 [![Go Reference](https://pkg.go.dev/badge/github.com/shibukawa/dbtestify.svg)](https://pkg.go.dev/github.com/shibukawa/dbtestify)
-[![GitHub Workflow Status](https://img.shields.io/github/workflow/status/shibukawa/dbtestify/CI)](
+![GitHub Workflow Status](https://img.shields.io/github/workflow/status/shibukawa/dbtestify/CI))
 
 ## Install
 
+### Binary
+
+Binary is available for Linux, macOS, and Windows. You can download the latest release from [GitHub Releases](https://github.com/shibukawa/dbtestify/releases).
+
 ### Container
 
+Install:
+
+```shell
+$ docker pull ghcr.io/shibukawa/dbtestify:latest 
+```
+
+Execute:
+:
+
+```shell
+# Execute CLI command
+$ docker run --rm -it -e "DBTESTIFY_CONN=(url)" ghcr.io/shibukawa/dbtestify:latest dbtestify [command] [args...]
+
+# Publish API Server
+$ docker run --rm -it -p 8080:8000-e "DBTESTIFY_CONN=(url)" ghcr.io/shibukawa/dbtestify:latest dbtestify http -p 8000
+```
+
 ### For Go users
+
+Install:
+
+```shell
+$ go get -tool github.com/shibukawa/dbtestify/cmd/dbtestify
+```
+
+Execute:
+
+```shell
+$ go tool dbtestify [command] [args...]
+```
 
 ## Usage
 

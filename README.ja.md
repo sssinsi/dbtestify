@@ -3,13 +3,45 @@
 ![icon](https://raw.githubusercontent.com/shibukawa/dbtestify/refs/heads/main/docs/dbtestify_icon.png)
 
 [![Go Reference](https://pkg.go.dev/badge/github.com/shibukawa/dbtestify.svg)](https://pkg.go.dev/github.com/shibukawa/dbtestify)
-[![GitHub Workflow Status](https://img.shields.io/github/workflow/status/shibukawa/dbtestify/CI)](
+![GitHub Workflow Status](https://img.shields.io/github/workflow/status/shibukawa/dbtestify/CI))
 
 ## インストール
 
+### バイナリ
+
+バイナリはLinux, macOS, Windowsで利用可能です。最新のリリースは[GitHub Releases](https://github.com/shibukawa/dbtestify/releases)を参照してください。
+
 ### コンテナ
 
+インストール:
+
+```shell
+$ docker pull ghcr.io/shibukawa/dbtestify:latest 
+```
+
+実行:
+
+```shell
+# CLIコマンドを実行
+$ docker run --rm -it -e "DBTESTIFY_CONN=(url)" ghcr.io/shibukawa/dbtestify:latest dbtestify [command] [args...]
+
+# APIサーバーを公開
+$ docker run --rm -it -p 8080:8000-e "DBTESTIFY_CONN=(url)" ghcr.io/shibukawa/dbtestify:latest dbtestify http -p 8000
+```
+
 ### Go ユーザー向け
+
+インストール:
+
+```shell
+$ go get -tool github.com/shibukawa/dbtestify/cmd/dbtestify
+```
+
+実行:
+
+```shell
+$ go tool dbtestify [command] [args...]
+```
 
 ## 使用方法
 
