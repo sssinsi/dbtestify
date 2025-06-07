@@ -3,7 +3,7 @@
 ![icon](https://raw.githubusercontent.com/shibukawa/dbtestify/refs/heads/main/docs/dbtestify_icon.png)
 
 [![Go Reference](https://pkg.go.dev/badge/github.com/shibukawa/dbtestify.svg)](https://pkg.go.dev/github.com/shibukawa/dbtestify)
-![GitHub Workflow Status](https://img.shields.io/github/workflow/status/shibukawa/dbtestify/CI))
+![GitHub Workflow Status](https://img.shields.io/github/workflow/status/shibukawa/dbtestify/CI)
 
 ## インストール
 
@@ -56,7 +56,7 @@ PostgreSQL、MySQL、SQLiteをサポートしています。以下の接続文�
 * SQLite: [詳細](https://github.com/mattn/go-sqlite3)
   * `sqlite://file:dbfilename.db`
 
-次に、YAML形式でデータセットファイルを準備します。このファイルはデータベースのシード化と、データベース内のデータのアサーションに使用されます。
+次に、YAML形式でデータセットファイルを準備します。このファイルはデータベースのデータ投入(シード化)と、データベース内のデータのアサーションに使用されます。
 
 ```yaml
 member:
@@ -76,7 +76,7 @@ group:
 - { id: 2, name: "Group B" }
 ```
 
-データセットのシード化/アサーションは、CLI、HTTP API、Goライブラリから行うことができます。
+データセットのデータ投入/アサーションは、CLI、HTTP API、Goライブラリから行うことができます。
 
 ### CLI
 
@@ -169,14 +169,14 @@ group:
 
 データセットは2つの目的で使用されます。特別なオプションは以下のとおりです：
 
-* ユニットテストでのテストデータのシード化
+* ユニットテストでのテストデータのデータ投入
   このデータセットは、テスト実行前にデータベースにインポートされます。
 * データベース内のデータのアサーション
   このデータセットは、実際のデータベース内のデータと比較されます。
 
-### シード化用データセット
+### データ投入用データセット
 
-シード化には複数のオプションがあります：
+データ投入時の処理には複数のオプションがあります：
 
 * `clear-insert`（デフォルト）: テーブルをトランケートしてからデータを挿入。
 * `insert`: テーブルにデータを挿入するだけ。
