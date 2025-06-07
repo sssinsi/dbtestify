@@ -1,6 +1,7 @@
 # DBTestify: test helper tool for the system that uses database
 
-[![GitHub License](https://img.shields.io/github/license/shibukawa/dbtestify)](
+![icon](https://raw.githubusercontent.com/shibukawa/dbtestify/refs/heads/main/docs/dbtestify_icon.png)
+
 [![Go Reference](https://pkg.go.dev/badge/github.com/shibukawa/dbtestify.svg)](https://pkg.go.dev/github.com/shibukawa/dbtestify)
 [![GitHub Workflow Status](https://img.shields.io/github/workflow/status/shibukawa/dbtestify/CI)](
 

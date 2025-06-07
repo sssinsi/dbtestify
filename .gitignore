@@ -1,2 +1,4 @@
 *.db
 testwork/*.db
+cmd/dbtestify/dbtestify
+cmd/dbtestify/dbtestify.exe
