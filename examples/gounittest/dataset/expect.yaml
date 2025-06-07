@@ -1,0 +1,2 @@
+counters:
+- { name: main_counter, value: 1 }

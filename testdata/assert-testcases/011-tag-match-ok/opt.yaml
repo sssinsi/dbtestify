@@ -1,0 +1,6 @@
+seedIncludeTags: [ ok ]
+seedExcludeTags: [ ignore ]
+seedTargets: [ member ]
+assertIncludeTags: [ ok ]
+assertExcludeTags: [ ignore ]
+assertTargets: [ member ]

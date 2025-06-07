@@ -1,0 +1,11 @@
+member:
+- { id: 1, name: Frank, email: frank@example.com, _tag: [ ok ] }
+- { id: 2, name: Grace, email: grace@example.com, _tag: [ ok ] }
+- { id: 3, name: Heidi, email: heidi@example.com, _tag: [ ok ] }
+- { id: 4, name: Ivan, _tag: [ ok ] }
+- { id: 7, name: Linn, _tag: [  ] }
+- { id: 8, name: Mike, _tag: [ ok, ignore ] }
+
+# this table is ignored by target option
+dummy: 
+- { id: 10 }

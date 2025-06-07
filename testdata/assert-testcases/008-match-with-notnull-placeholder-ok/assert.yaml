@@ -1,0 +1,8 @@
+_match:
+  member: exact
+
+member:
+- { id: 1, name: Frank, email: frank@example.com }
+- { id: 2, name: Grace, email: grace@example.com }
+- { id: 3, name: Heidi, email: heidi@example.com }
+- { id: 4, name: Ivan,  email: [notnull] }
