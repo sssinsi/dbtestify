@@ -88,7 +88,7 @@ func main() {
 		var startTime time.Time
 		opt := dbtestify.SeedOpt{
 			BatchSize:    cli.Seed.BatchSize,
-			Operations:   map[string]dbtestify.Operation{},
+			Operations:   data.Operation,
 			IncludeTags:  cli.Seed.IncludeTag,
 			ExcludeTags:  cli.Seed.ExcludeTag,
 			TargetTables: cli.Seed.Targets,
