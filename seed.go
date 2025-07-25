@@ -98,7 +98,13 @@ func Seed(ctx context.Context, dbc DBConnector, data *DataSet, opt SeedOpt) erro
 				return err
 			}
 		case DeleteOperation:
+			if opt.Callback != nil {
+				opt.Callback(t.Name, "delete", true, nil)
+			}
 			err := processDeleteOperation(ctx, dbc, tx, t, opt)
+			if opt.Callback != nil {
+				opt.Callback(t.Name, "delete", false, err)
+			}
 			if err != nil {
 				return err
 			}

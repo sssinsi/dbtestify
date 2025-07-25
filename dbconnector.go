@@ -196,11 +196,12 @@ func (p *psqlDBConnector) Delete(ctx context.Context, tx *sql.Tx, tableName stri
 	var columnStr string
 	var placeholderStr string
 	if len(columns) > 1 {
+		columnStr = "(" + strings.Join(columns, ", ") + ")"
 		placeholderStr = pgPlaceholders(len(columns), len(values)/len(columns))
 	} else {
 		columnStr = columns[0]
 		var placeholders []string
-		for i := range len(columns) {
+		for i := range len(values) {
 			placeholders = append(placeholders, "$"+strconv.Itoa(i+1))
 		}
 		placeholderStr = strings.Join(placeholders, ", ")
@@ -347,6 +348,7 @@ func (m *mysqlDBConnector) Delete(ctx context.Context, tx *sql.Tx, tableName str
 	var columnStr string
 	var placeholderStr string
 	if len(columns) > 1 {
+		columnStr = "(" + strings.Join(columns, ", ") + ")"
 		placeholderStr = slPlaceholders(len(columns), len(values)/len(columns))
 	} else {
 		columnStr = columns[0]
@@ -469,6 +471,7 @@ func (s *sqliteDBConnector) Delete(ctx context.Context, tx *sql.Tx, tableName st
 	var columnStr string
 	var placeholderStr string
 	if len(columns) > 1 {
+		columnStr = "(" + strings.Join(columns, ", ") + ")"
 		placeholderStr = slPlaceholders(len(columns), len(values)/len(columns))
 	} else {
 		columnStr = columns[0]
