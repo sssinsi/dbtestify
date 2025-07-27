@@ -5,9 +5,11 @@ import (
 	"database/sql"
 	"errors"
 	"fmt"
+	"os"
 	"slices"
 	"strconv"
 	"strings"
+	"time"
 
 	_ "github.com/go-sql-driver/mysql"
 	_ "github.com/jackc/pgx/v5/stdlib"
@@ -46,6 +48,40 @@ func NewDBConnector(ctx context.Context, source string) (DBConnector, error) {
 		if err != nil {
 			return nil, fmt.Errorf("%w: can't connect to MySQL '%s': %s", ErrInvalidDBDriver, err.Error(), source)
 		}
+		
+		// 接続プール設定を環境変数から設定
+		if maxOpen := os.Getenv("DB_MAX_OPEN_CONNS"); maxOpen != "" {
+			if n, err := strconv.Atoi(maxOpen); err == nil {
+				db.SetMaxOpenConns(n)
+			}
+		} else {
+			db.SetMaxOpenConns(2) // デフォルト値
+		}
+		
+		if maxIdle := os.Getenv("DB_MAX_IDLE_CONNS"); maxIdle != "" {
+			if n, err := strconv.Atoi(maxIdle); err == nil {
+				db.SetMaxIdleConns(n)
+			}
+		} else {
+			db.SetMaxIdleConns(0) // デフォルト値
+		}
+		
+		if maxLifetime := os.Getenv("DB_CONN_MAX_LIFETIME"); maxLifetime != "" {
+			if d, err := time.ParseDuration(maxLifetime); err == nil {
+				db.SetConnMaxLifetime(d)
+			}
+		} else {
+			db.SetConnMaxLifetime(5 * time.Second) // デフォルト値
+		}
+		
+		if maxIdleTime := os.Getenv("DB_CONN_MAX_IDLE_TIME"); maxIdleTime != "" {
+			if d, err := time.ParseDuration(maxIdleTime); err == nil {
+				db.SetConnMaxIdleTime(d)
+			}
+		} else {
+			db.SetConnMaxIdleTime(1 * time.Second) // デフォルト値
+		}
+		
 		go func() {
 			<-ctx.Done()
 			db.Close()
